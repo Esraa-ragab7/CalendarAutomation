@@ -3,8 +3,9 @@ package ios_tests.pages;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.CalendarPage;
 
-public class IOSCalendarPage {
+public class IOSCalendarPage implements CalendarPage {
     private final WebDriver driver;
     private final By addEventButton = AppiumBy.accessibilityId("add-plus-button");
     private final By titleField = AppiumBy.accessibilityId("title-field");
