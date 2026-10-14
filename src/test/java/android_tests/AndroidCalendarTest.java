@@ -7,7 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import android_tests.pages.CalendarPage;
+import android_tests.pages.AndroidCalendarPage;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,7 +15,7 @@ import java.net.URL;
 public class AndroidCalendarTest {
 
     private AndroidDriver driver;
-    private CalendarPage calendarPage;
+    private AndroidCalendarPage calendarPage;
 
     @BeforeMethod
     public void setUp() throws MalformedURLException {
@@ -33,7 +33,7 @@ public class AndroidCalendarTest {
                 new URL("http://127.0.0.1:4723"),
                 options
         );
-        calendarPage =  new CalendarPage(driver);
+        calendarPage =  new AndroidCalendarPage(driver);
     }
 
     @DataProvider(name = "eventData")
@@ -47,11 +47,11 @@ public class AndroidCalendarTest {
 
     @Test(dataProvider = "eventData")
     public void addCalendarEventTest(String eventTitle) {
-        calendarPage.openCreationMenu();
+        calendarPage.clickAddEventButton();
         calendarPage.selectEvent();
-        calendarPage.addTitle(eventTitle);
+        calendarPage.insertTitle(eventTitle);
         calendarPage.clickSaveButton();
-        boolean eventExists = calendarPage.checkIfEventExists(eventTitle);
+        boolean eventExists = calendarPage.checkTitle(eventTitle);
         Assert.assertTrue(
                 eventExists,
                 "Event was not added successfully"

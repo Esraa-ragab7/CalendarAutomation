@@ -1,4 +1,12 @@
-package ios_tests.pages;
+package pages;
 
-public class CalendarPage {
+public interface CalendarPage {
+
+    void clickAddEventButton();
+
+    void insertTitle(String title);
+
+    void clickSaveButton();
+
+    boolean checkTitle(String title);
 }
